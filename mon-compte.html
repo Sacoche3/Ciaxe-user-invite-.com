@@ -24,12 +24,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .header img {
-      max-width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
     #phoneNumber {
       font-size: 16px;
       margin: 10px 0;
@@ -46,7 +40,30 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .gains-section {
+    .vip-section {
+      background-color: gold;
+      color: #333;
+      padding: 10px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 300px;
+      margin: 10px auto;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .vip-section h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .vip-section p {
+      margin: 5px 0 0;
+      font-size: 14px;
+    }
+
+    .revenus-section {
       background-color: rgba(255, 255, 255, 0.9);
       color: #333;
       padding: 15px;
@@ -57,7 +74,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .gains-section p {
+    .revenus-section p {
       margin: 10px 0;
       font-size: 14px;
     }
@@ -133,17 +150,24 @@
 <body>
 
   <div class="header">
-    <img src="https://image.noelshack.com/fichiers/2024/40/5/1728046860-picsart-24-10-04-13-00-41-763.jpg" alt="Logo">
     <p id="phoneNumber">Identifiant : Inconnu</p>
-    <div id="solde"> 12,000 FCFA</div>
+    <div id="solde">9,000 FCFA</div>
   </div>
 
-  <div class="gains-section">
-    <p id="gains-jour">Gains d'aujourd'hui :12,000 FCFA</p>
-    <p id="gains-hier">Gains de la semaine:12,000 FCFA</p>
-    <p id="total-produits">Nombre de Stade 5 : </p>
+  <!-- Section VIP -->
+  <div class="vip-section">
+    <h3>VIP: 0</h3>
+    <p>Statut actuel: Non activé</p>
   </div>
 
+  <!-- Section Revenus -->
+  <div class="revenus-section">
+    <p id="gains-jour">Revenus d'aujourd'hui: 00 FCFA</p>
+    <p id="gains-hier">Revenus hebdomadaires: 00 FCFA</p>
+    <p id="total-produits">Nombre de VIP: 0</p>
+  </div>
+
+  <!-- Section des boutons -->
   <div class="button-container">
     <div class="button-group">
       <a href="depot.html" title="Recharge">⚡️<span>Recharge</span></a>
@@ -151,10 +175,11 @@
       <a href="service.html" title="Service">👤<span>Service</span></a>
       <a href="portefeuille.html" title="Bancaire">🗳<span>Bancaire</span></a>
       <a href="carte_bancaire.html" title="Ma carte">🪪<span>Ma carte</span></a>
-      <a href="historique-recharge.html" title="H Retrait">🗑<span>H Recharge</span></a>
+      <a href="historique-recharge.html" title="H Recharge">🗑<span>H Recharge</span></a>
     </div>
   </div>
 
+  <!-- Footer fixe -->
   <div class="fixed-footer">
     <a href="page-principale.html" title="Home"><i>🎨</i><span>Investir</span></a>
     <a href="historique.html" title="Historique"><i>🗑</i><span>Historique</span></a>
