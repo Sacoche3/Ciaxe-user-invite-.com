@@ -75,22 +75,6 @@
             font-size: 0.85rem;
             letter-spacing: 0.5px;
         }
-        .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background-color 0.3s ease;
-        }
-        .delete-btn:hover {
-            background-color: #d32f2f;
-        }
         @media (max-width: 600px) {
             .container {
                 margin: 10px;
@@ -129,8 +113,7 @@
                     <p class="date">Date et heure : ${withdrawal.date}</p>
                     <p class="fee">Frais de retrait : ${withdrawal.fee} XOF</p>
                     <p class="success-amount">Montant réussi : ${successAmount} XOF</p>
-                    <p class="status">Statut : Traitement bancaire</p>
-                    <button class="delete-btn" onclick="deleteWithdrawal(${index})">Supprimer</button>
+                    <p class="status">Statut : ${withdrawal.status || 'En attente'}</p>
                 `;
 
                 list.appendChild(withdrawalItem);
@@ -140,6 +123,13 @@
         function deleteWithdrawal(index) {
             let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
             withdrawals.splice(index, 1);
+            localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+            displayWithdrawals();
+        }
+
+        function approveWithdrawal(index) {
+            let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
+            withdrawals[index].status = 'Approuvé';
             localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
             displayWithdrawals();
         }
