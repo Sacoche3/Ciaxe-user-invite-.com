@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Page avec Logo, Identifiant, Solde et Boutons</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #ffffff;
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header img {
+      max-width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #phoneNumber {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    #solde {
+      font-size: 28px;
+      font-weight: bold;
+      background-color: rgba(255, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-top: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .gains-section {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 15px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 300px;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .gains-section p {
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .button-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 300px;
+      margin: 20px auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .button-group a {
+      background-color: #ffc107;
+      border: none;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      color: #333;
+      font-size: 12px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-group a:hover {
+      transform: scale(1.05);
+      background-color: #ffca28;
+    }
+
+    .button-group a span {
+      margin-top: 5px;
+    }
+
+    .fixed-footer {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px 0;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .fixed-footer a {
+      color: #333;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .fixed-footer a i {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="https://image.noelshack.com/fichiers/2024/40/5/1728046860-picsart-24-10-04-13-00-41-763.jpg" alt="Logo">
+    <p id="phoneNumber">Identifiant : Inconnu</p>
+    <div id="solde"> 12,000 FCFA</div>
+  </div>
+
+  <div class="gains-section">
+    <p id="gains-jour">Gains d'aujourd'hui :12,000 FCFA</p>
+    <p id="gains-hier">Gains de la semaine:12,000 FCFA</p>
+    <p id="total-produits">Nombre de Stade 5 : </p>
+  </div>
+
+  <div class="button-container">
+    <div class="button-group">
+      <a href="depot.html" title="Recharge">⚡️<span>Recharge</span></a>
+      <a href="retrait.html" title="Retrait">💸<span>Retrait</span></a>
+      <a href="service.html" title="Service">👤<span>Service</span></a>
+      <a href="portefeuille.html" title="Bancaire">🗳<span>Bancaire</span></a>
+      <a href="carte_bancaire.html" title="Ma carte">🪪<span>Ma carte</span></a>
+      <a href="historique-recharge.html" title="H Retrait">🗑<span>H Recharge</span></a>
+    </div>
+  </div>
+
+  <div class="fixed-footer">
+    <a href="page-principale.html" title="Home"><i>🎨</i><span>Investir</span></a>
+    <a href="historique.html" title="Historique"><i>🗑</i><span>Historique</span></a>
+    <a href="equipe.html" title="Team"><i>🚹</i><span>Team</span></a>
+    <a href="mon-compte.html" title="Compte"><i>🪙</i><span>Compte</span></a>
+  </div>
+
+  <script>
+    function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function setPhoneNumber(phone) {
+      localStorage.setItem('phoneNumber', phone);
+      document.getElementById('phoneNumber').textContent = `Identifiant : ${phone}`;
+    }
+
+    window.onload = function() {
+      let phone = getQueryParameter('phone') || localStorage.getItem('phoneNumber');
+      if (phone) {
+        setPhoneNumber(phone);
+      }
+    }
+  </script>
+</body>
+</html>

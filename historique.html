@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Historique de Retrait</title>
+    <style>
+        body, html {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .withdrawal-item {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .withdrawal-item:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        .withdrawal-item p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .amount {
+            color: #FFD700;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .date {
+            color: #00FFFF;
+        }
+        .fee {
+            color: #FF6B6B;
+            font-size: 1rem;
+        }
+        .success-amount {
+            color: #7FFF00;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        .status {
+            color: #FFA500;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background-color 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .withdrawal-item {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Historique de Retrait</h1>
+        <div id="withdrawal-list"></div>
+    </div>
+    <script>
+        function displayWithdrawals() {
+            const withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
+            const list = document.getElementById('withdrawal-list');
+            list.innerHTML = '';
+
+            withdrawals.forEach((withdrawal, index) => {
+                const withdrawalItem = document.createElement('div');
+                withdrawalItem.className = 'withdrawal-item';
+
+                const amount = parseFloat(withdrawal.amount);
+                const fee = parseFloat(withdrawal.fee);
+                const successAmount = (amount - fee).toFixed(2);
+
+                withdrawalItem.innerHTML = `
+                    <p class="amount">-${withdrawal.amount} XOF</p>
+                    <p class="date">Date et heure : ${withdrawal.date}</p>
+                    <p class="fee">Frais de retrait : ${withdrawal.fee} XOF</p>
+                    <p class="success-amount">Montant réussi : ${successAmount} XOF</p>
+                    <p class="status">Statut : Traitement bancaire</p>
+                    <button class="delete-btn" onclick="deleteWithdrawal(${index})">Supprimer</button>
+                `;
+
+                list.appendChild(withdrawalItem);
+            });
+        }
+
+        function deleteWithdrawal(index) {
+            let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
+            withdrawals.splice(index, 1);
+            localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+            displayWithdrawals();
+        }
+
+        displayWithdrawals();
+    </script>
+</body>
+</html>

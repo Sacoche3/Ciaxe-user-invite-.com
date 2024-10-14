@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Investissement</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 20px 0 70px;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .investment-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .investment-stage {
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 15px;
+            width: 220px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .investment-stage h2 {
+            font-size: 18px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+        .investment-stage p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .investment-stage button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255,255,255,0.9);
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        .fixed-footer a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+        .fixed-footer a::before {
+            content: '';
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .fixed-footer a:nth-child(1)::before { content: '🎨'; }
+        .fixed-footer a:nth-child(2)::before { content: '🗑'; }
+        .fixed-footer a:nth-child(3)::before { content: '🚹'; }
+        .fixed-footer a:nth-child(4)::before { content: '🪙'; }
+    </style>
+</head>
+<body>
+    <h1>TABLEAU DES REVENUS:
+    
+         Les frais de retrait sont appliqués a 20 %</h1>
+    <div class="investment-container">
+        <div class="investment-stage">
+            <h2>Stade 1</h2>
+            <p>Prix : 8 500 FCFA</p>
+            <p>Revenus : 1 700 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 51 000 FCFA</p>
+            <button onclick="invest(1)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 2</h2>
+            <p>Prix : 15 000 FCFA</p>
+            <p>Revenus : 3 000 FCFA/j</p>
+            <p>Cycle : 31 jours</p>
+            <p>Total : 93 000 FCFA</p>
+            <button onclick="invest(2)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 3</h2>
+            <p>Prix : 25 000 FCFA</p>
+            <p>Revenus : 5 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 150 000 FCFA</p>
+            <button onclick="invest(3)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 4</h2>
+            <p>Prix : 40 000 FCFA</p>
+            <p>Revenus : 8 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 240 000 FCFA</p>
+            <button onclick="invest(4)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 5</h2>
+            <p>Prix : 60 000 FCFA</p>
+            <p>Revenus : 12 000 FCFA/j</p>
+            <p>Cycle : 31 jours</p>
+            <p>Total : 372 000 FCFA</p>
+            <button onclick="invest(5)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 6</h2>
+            <p>Prix : 100 000 FCFA</p>
+            <p>Revenus : 20 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 600 000 FCFA</p>
+            <button onclick="invest(6)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 7</h2>
+            <p>Prix : 150 000 FCFA</p>
+            <p>Revenus : 30 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 900 000 FCFA</p>
+            <button onclick="invest(7)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 8</h2>
+            <p>Prix : 200 000 FCFA</p>
+            <p>Revenus : 40 000 FCFA/j</p>
+            <p>Cycle : 31 jours</p>
+            <p>Total : 1 200 000 FCFA</p>
+            <button onclick="invest(8)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 9</h2>
+            <p>Prix : 250 000 FCFA</p>
+            <p>Revenus : 50 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 1 500 000 FCFA</p>
+            <button onclick="invest(9)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 10</h2>
+            <p>Prix : 300 000 FCFA</p>
+            <p>Revenus : 60 000 FCFA/j</p>
+            <p>Cycle : 31 jours</p>
+            <p>Total :1 860 000 FCFA</p>
+            <button onclick="invest(10)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 11</h2>
+            <p>Prix : 400 000 FCFA</p>
+            <p>Revenus : 80 000 FCFA/j</p>
+            <p>Cycle : 29 jours</p>
+            <p>Total : 2 320 000 FCFA</p>
+            <button onclick="invest(11)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 12</h2>
+            <p>Prix : 500 000 FCFA</p>
+            <p>Revenus : 100 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 3 000 000 FCFA</p>
+            <button onclick="invest(12)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 13</h2>
+            <p>Prix : 600 000 FCFA</p>
+            <p>Revenus : 120 000 FCFA/j</p>
+            <p>Cycle : 10 jours</p>
+            <p>Total : 3 600 000 FCFA</p>
+            <button onclick="invest(13)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 14</h2>
+            <p>Prix : 700 000 FCFA</p>
+            <p>Revenus : 140 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 4 200 000 FCFA</p>
+            <button onclick="invest(14)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 15</h2>
+            <p>Prix : 800 000 FCFA</p>
+            <p>Revenus : 160 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 4 800 000 FCFA</p>
+            <button onclick="invest(15)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 16</h2>
+            <p>Prix : 900 000 FCFA</p>
+            <p>Revenus : 180 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 5 400 000 FCFA</p>
+            <button onclick="invest(16)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 17</h2>
+            <p>Prix : 1 000 000 FCFA</p>
+            <p>Revenus : 200 000 FCFA/j</p>
+            <p>Cycle : 31 jours</p>
+            <p>Total : 6 200 000 FCFA</p>
+            <button onclick="invest(17)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 18</h2>
+            <p>Prix : 1 200 000 FCFA</p>
+            <p>Revenus : 240 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 7 200 000 FCFA</p>
+            <button onclick="invest(18)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 19</h2>
+            <p>Prix : 1 500 000 FCFA</p>
+            <p>Revenus : 300 000 FCFA/j</p>
+            <p>Cycle : 30 jours</p>
+            <p>Total : 9 000 000 FCFA</p>
+            <button onclick="invest(19)">Investir</button>
+        </div>
+        <div class="investment-stage">
+            <h2>Stade 20</h2>
+            <p>Prix : 2 000 000 FCFA</p>
+            <p>Revenus : 400 000 FCFA/j</p>
+            <p>Cycle : 32 jours</p>
+            <p>Total : 12 800 000 FCFA</p>
+            <button onclick="invest(20)">Investir</button>
+        </div>
+    </div>
+    <div class="fixed-footer">
+        <a href="page-principale.html">Investir</a>
+        <a href="historique.html">Historique</a>
+        <a href="equipe.html">Team</a>
+        <a href="mon-compte.html">Compte</a>
+    </div>
+    <script>
+        function invest(stade) {
+            alert("Solde insuffisant pour activer le niveau " + stade);
+        }
+    </script>
+</body>
+</html>

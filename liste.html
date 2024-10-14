@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Invités</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c15ff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #eaffff;
+        }
+        .invites {
+            background-color: #ff000a;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .invite {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .invite:last-child {
+            border-bottom: none;
+        }
+        .montant {
+            color: green;
+            font-weight: bold;
+        }
+        .delete-button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Liste des Invités</h1>
+    <div class="invites" id="invitesList">
+        <!-- Les invités seront ajoutés ici -->
+    </div>
+
+    <script>
+        // Fonction pour afficher la liste des invités
+        function displayInvites() {
+            const invites = JSON.parse(localStorage.getItem('invites')) || [];
+            const invitesList = document.getElementById('invitesList');
+            invitesList.innerHTML = ''; // Efface la liste actuelle
+
+            invites.forEach((invite, index) => {
+                const inviteDiv = document.createElement('div');
+                inviteDiv.classList.add('invite');
+                inviteDiv.innerHTML = `
+                    <span>Numéro : ${invite.number}</span>
+                    <span class="montant">Montant : +${invite.amount} FCFA</span>
+                    <button class="delete-button" onclick="deleteInvite(${index})">Supprimer</button>
+                `;
+                invitesList.appendChild(inviteDiv);
+            });
+        }
+
+        // Fonction pour supprimer un invité
+        function deleteInvite(index) {
+            const invites = JSON.parse(localStorage.getItem('invites')) || [];
+            invites.splice(index, 1); // Supprime l'invité à l'index donné
+            localStorage.setItem('invites', JSON.stringify(invites)); // Met à jour le localStorage
+            displayInvites(); // Rafraîchit la liste
+        }
+
+        // Affiche la liste au chargement de la page
+        displayInvites();
+    </script>
+
+</body>
+</html>

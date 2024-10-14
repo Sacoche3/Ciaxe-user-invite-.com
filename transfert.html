@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Invité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(50% - 20px);
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ajouter un Invité</h1>
+    <form id="inviteForm">
+        <input type="text" id="inviteNumber" placeholder="Numéro de l'invité" required>
+        <input type="number" id="inviteAmount" placeholder="Montant (FCFA)" required>
+        <input type="submit" value="Ajouter Invité">
+    </form>
+
+    <script>
+        document.getElementById('inviteForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+
+            // Récupération des valeurs
+            const number = document.getElementById('inviteNumber').value;
+            const amount = document.getElementById('inviteAmount').value;
+
+            // Stockage dans le localStorage
+            const invites = JSON.parse(localStorage.getItem('invites')) || [];
+            invites.push({ number: number, amount: amount });
+            localStorage.setItem('invites', JSON.stringify(invites));
+
+            // Redirection vers la liste des invités
+            window.location.href = 'liste.html';
+        });
+    </script>
+
+</body>
+</html>
